@@ -10,7 +10,7 @@ export const education: EducationEntry[] = [
     school: "Université Laval",
     credential: "MBA, Business Analytics",
     period: "Expected 2027",
-    note: "AACSB + EQUIS accredited — Strategic Management, Financial Intelligence, Data-Driven Leadership",
+    note: "AACSB and EQUIS accredited: strategic management, financial intelligence, data-driven leadership",
   },
   {
     school: "Polytechnique Montréal",
@@ -19,7 +19,7 @@ export const education: EducationEntry[] = [
   },
   {
     school: "Ordre des ingénieurs du Québec (OIQ)",
-    credential: "P.Eng. — Professional Engineer",
+    credential: "Professional Engineer (P.Eng.)",
     period: "",
   },
 ];

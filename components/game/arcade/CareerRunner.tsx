@@ -107,7 +107,7 @@ export function CareerRunner({ levelId, onComplete }: MinigameProps & { levelId:
           />
         </span>
         <span className="shrink-0 text-xs text-subtle">
-          {(status?.charge ?? 0) >= 1 ? "ready — press E" : "recharging"}
+          {(status?.charge ?? 0) >= 1 ? "ready, press E" : "recharging"}
         </span>
       </div>
 
@@ -130,7 +130,7 @@ export function CareerRunner({ levelId, onComplete }: MinigameProps & { levelId:
         ref={canvasRef}
         className="w-full rounded-xl border border-line bg-black"
         style={{ aspectRatio: `${VIEW_W} / ${VIEW_H}` }}
-        aria-label={`${level.title} — a side-scrolling level. Use arrow keys to move and jump, or the on-screen buttons.`}
+        aria-label={`${level.title}: a side-scrolling level. Use arrow keys to move and jump, or the on-screen buttons.`}
         role="img"
       />
 

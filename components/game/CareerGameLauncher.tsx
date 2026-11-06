@@ -25,20 +25,20 @@ export function CareerGameLauncher() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group flex w-full items-center gap-4 rounded-2xl border border-dashed border-accent/50 bg-accent-soft p-5 text-left transition hover:border-accent hover:bg-accent-soft/70"
+        className="group flex w-full items-center gap-4 rounded-md border border-line p-5 text-left transition-colors hover:border-foreground"
       >
-        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-white transition group-hover:scale-110">
-          <Icons.play className="size-5" />
+        <span className="grid size-10 shrink-0 place-items-center rounded-full border border-line text-foreground transition-colors group-hover:border-foreground">
+          <Icons.play className="size-4" />
         </span>
         <span className="flex-1">
           <span className="block font-semibold">Play my story instead of reading it</span>
           <span className="mt-0.5 block text-sm text-muted">
-            Ten side-scrolling chapters — Algiers to Montreal, a degree rebuilt from zero,
+            Ten side-scrolling chapters: Algiers to Montreal, a degree rebuilt from zero,
             citizenship, four engineering roles, and an MBA still in progress.
           </span>
         </span>
-        <span className="hidden shrink-0 text-sm text-subtle sm:block">
-          {cleared}/{careerLevels.length}
+        <span className="hidden shrink-0 text-sm text-subtle tabular-nums sm:block">
+          {cleared} of {careerLevels.length} cleared
         </span>
       </button>
 

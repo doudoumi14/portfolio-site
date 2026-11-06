@@ -100,7 +100,7 @@ export function CareerGame({ onClose }: { onClose: () => void }) {
             <>
               <p className="text-muted">
                 Ten chapters, from a lecture hall in Algiers to an MBA still in progress. Play them in
-                order for the whole story — or jump to whichever one interests you.
+                order for the whole story, or jump to whichever one interests you.
               </p>
 
               {allCleared && (
@@ -155,7 +155,7 @@ export function CareerGame({ onClose }: { onClose: () => void }) {
           {phase === "brief" && (
             <>
               <p className="text-xs tracking-wider text-accent uppercase">
-                Level {levelIndex + 1} — {level.year}
+                Level {levelIndex + 1}, {level.year}
               </p>
               <h3 className="mt-1 text-2xl font-bold">{level.company}</h3>
               <p className="text-sm text-muted">{level.role}</p>

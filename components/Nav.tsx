@@ -20,24 +20,28 @@ export function Nav() {
   const active = useActiveSection(SECTION_IDS);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-background/80 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-y-2 px-6 py-4">
-        <a href="#top" className="shrink-0 text-sm font-bold tracking-tight whitespace-nowrap">
+    <header className="sticky top-0 z-50 border-b border-line bg-background">
+      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-3.5">
+        <a
+          href="#top"
+          className="shrink-0 font-serif text-lg font-semibold tracking-tight whitespace-nowrap"
+        >
           {profile.name}
-          <span className="text-accent">.</span>
         </a>
 
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          <ul className="flex flex-wrap items-center gap-x-1 gap-y-1 text-sm">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          {/* One row on a phone: the name and the theme. The page is a single
+              scroll, so the section links are for wider screens. */}
+          <ul className="hidden flex-wrap items-center gap-x-5 gap-y-1 text-[15px] sm:flex">
             {LINKS.map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
                   aria-current={active === link.id ? "true" : undefined}
-                  className={`rounded-full px-3 py-1.5 transition ${
+                  className={`border-b-2 py-1 transition-colors ${
                     active === link.id
-                      ? "bg-accent-soft font-medium text-accent"
-                      : "text-muted hover:text-foreground"
+                      ? "border-accent text-foreground"
+                      : "border-transparent text-muted hover:text-foreground"
                   }`}
                 >
                   {link.label}

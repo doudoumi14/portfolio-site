@@ -1,71 +1,41 @@
 import { githubUrl, profile } from "@/data/profile";
-import { DecryptText } from "./DecryptText";
-import { NetworkCanvas } from "./NetworkCanvas";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <NetworkCanvas />
-      </div>
-      <div aria-hidden className="dot-grid absolute inset-0 -z-10 opacity-60" />
-      <div
-        aria-hidden
-        className="absolute -top-40 left-1/2 -z-10 size-[36rem] -translate-x-1/2 rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--accent), transparent 70%)" }}
-      />
+    <section id="top" className="mx-auto max-w-5xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
+      <p className="text-[15px] text-muted">{profile.location}</p>
 
-      <div className="mx-auto max-w-5xl px-6 pt-24 pb-16">
-        <div className="reveal is-visible">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card/70 px-3 py-1 text-sm text-muted backdrop-blur">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-accent" />
-            </span>
-            {profile.location}
-          </span>
+      <h1 className="mt-3 font-serif text-5xl leading-[1.02] font-semibold tracking-tight sm:text-7xl">
+        {profile.name}, <span className="whitespace-nowrap">{profile.credential}</span>
+      </h1>
 
-          {/* The decrypt effect is decorative and aria-hidden, so the heading
-              states its own accessible name rather than exposing scrambled text. */}
-          <h1
-            aria-label={`${profile.name}, ${profile.credential}`}
-            className="mt-6 text-5xl font-bold tracking-tight sm:text-7xl"
-          >
-            <DecryptText text={profile.name} className="gradient-text" />
-            <span aria-hidden className="text-foreground">
-              , {profile.credential}
-            </span>
-          </h1>
+      <p className="mt-6 max-w-3xl text-xl leading-snug sm:text-2xl">{profile.role}</p>
 
-          <p className="mt-4 text-xl font-medium text-muted sm:text-2xl">{profile.role}</p>
+      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">{profile.summary}</p>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{profile.summary}</p>
-
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-            >
-              Connect on LinkedIn
-            </a>
-            <a
-              href="#experience"
-              className="rounded-full border border-line bg-background/40 px-6 py-3 text-sm font-semibold backdrop-blur transition hover:border-accent hover:text-accent"
-            >
-              View experience
-            </a>
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-line bg-background/40 px-6 py-3 text-sm font-semibold backdrop-blur transition hover:border-accent hover:text-accent"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
+      <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-4">
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-md bg-accent px-5 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-foreground dark:text-background dark:hover:bg-foreground"
+        >
+          Connect on LinkedIn
+        </a>
+        <a
+          href="#experience"
+          className="text-[15px] font-semibold underline decoration-line decoration-2 underline-offset-[0.3em] transition-colors hover:decoration-foreground"
+        >
+          View experience
+        </a>
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="text-[15px] font-semibold underline decoration-line decoration-2 underline-offset-[0.3em] transition-colors hover:decoration-foreground"
+        >
+          GitHub
+        </a>
       </div>
     </section>
   );

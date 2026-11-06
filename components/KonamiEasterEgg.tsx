@@ -50,7 +50,7 @@ export function KonamiEasterEgg() {
       <p className="text-xs font-semibold tracking-wider text-accent uppercase">
         Achievement unlocked
       </p>
-      <p className="mt-1 font-bold">Curiosity — level 10</p>
+      <p className="mt-1 font-bold">Curiosity, level 10</p>
       <p className="mt-1 text-sm text-muted">
         You typed the Konami code on an engineer&apos;s portfolio. That is exactly the kind of
         thing I look for in a teammate. Press{" "}

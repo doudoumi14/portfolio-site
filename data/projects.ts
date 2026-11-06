@@ -54,7 +54,7 @@ export const projects: Project[] = [
     name: "CollabBoard",
     tagline: "Real-time collaborative kanban board",
     description:
-      "A kanban board that syncs instantly across every open tab over WebSockets — no polling, no refresh.",
+      "A kanban board that syncs instantly across every open tab over WebSockets, with no polling and no refresh.",
     tech: ["React", "TypeScript", "Node.js", "Express", "Socket.io"],
     repo: "collabboard",
     highlights: [

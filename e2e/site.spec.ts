@@ -4,14 +4,11 @@ import { experience } from "../data/experience";
 import { projects } from "../data/projects";
 
 // Keyboard shortcuts only work once the client bundle has hydrated and
-// attached its listeners. The hero canvas gets its backing size in an effect,
-// so a non-zero width is a genuine "client JS has run" signal — more reliable
-// than sleeping for an arbitrary interval.
+// attached its listeners. The page sets data-hydrated in an effect, so it is
+// a genuine "client JS has run" signal, more reliable than sleeping for an
+// arbitrary interval.
 async function waitForHydration(page: Page) {
-  await page.waitForFunction(() => {
-    const canvas = document.querySelector("#top canvas") as HTMLCanvasElement | null;
-    return !!canvas && canvas.width > 0;
-  });
+  await page.waitForFunction(() => document.documentElement.dataset.hydrated === "true");
 }
 
 // Even after hydration, a keypress can land in the gap before a given
@@ -104,48 +101,21 @@ test.describe("Portfolio site", () => {
     expect(overflows).toBe(false);
   });
 
-  test("all sections become visible after scrolling through the page", async ({ page }) => {
+  test("no content waits for a scroll to appear", async ({ page }) => {
+    // Until 2026-11-06 sections faded in as they scrolled into view, so a
+    // screenshot, a crawler or a slow script saw a mostly empty page. Now
+    // everything is drawn at once: nothing in the page is transparent.
     await page.goto("/");
-    await page.evaluate(async () => {
-      document.documentElement.style.scrollBehavior = "auto";
-      const step = Math.floor(window.innerHeight * 0.6);
-      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
-        window.scrollTo(0, y);
-        await new Promise((r) => setTimeout(r, 80));
-      }
-    });
-
-    // Nothing may be left stuck at opacity 0 by the scroll-reveal. Polled
-    // rather than asserted once: the reveal is a 600ms fade, so the last
-    // element to come into view is legitimately mid-transition right after
-    // the scroll finishes.
-    await expect
-      .poll(
-        () =>
-          page.evaluate(
-            () =>
-              Array.from(document.querySelectorAll(".reveal")).filter(
-                (el) => parseFloat(getComputedStyle(el).opacity) < 0.9,
-              ).length,
-          ),
-        { timeout: 5000 },
-      )
-      .toBe(0);
+    const faded = await page.evaluate(
+      () =>
+        Array.from(document.querySelectorAll("main *")).filter(
+          (el) => parseFloat(getComputedStyle(el).opacity) < 1,
+        ).length,
+    );
+    expect(faded).toBe(0);
   });
 
-  test("content is still visible when the reveal script never runs", async ({ page }) => {
-    await page.goto("/");
-    // Simulates JS failing to boot: without .js-reveal the content must render
-    // normally rather than staying permanently invisible.
-    await page.evaluate(() => document.documentElement.classList.remove("js-reveal"));
-    const opacity = await page
-      .locator("#contact .reveal")
-      .first()
-      .evaluate((el) => parseFloat(getComputedStyle(el).opacity));
-    expect(opacity).toBe(1);
-  });
-
-  test("the impact metrics count up to their final values", async ({ page }) => {
+  test("the Bell figures are on the page", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByText("99.9%", { exact: true })).toBeVisible();
     await expect(page.getByText("90%", { exact: true }).first()).toBeVisible();
@@ -230,36 +200,6 @@ test.describe("Portfolio site", () => {
     await expect(input).toHaveValue("experience");
   });
 
-  test("the hero network canvas renders", async ({ page }) => {
-    await page.goto("/");
-    const canvas = page.locator("#top canvas");
-    await expect(canvas).toHaveCount(1);
-    // A painted canvas has non-zero backing dimensions.
-    const size = await canvas.evaluate((el) => {
-      const c = el as HTMLCanvasElement;
-      return { w: c.width, h: c.height };
-    });
-    expect(size.w).toBeGreaterThan(0);
-    expect(size.h).toBeGreaterThan(0);
-  });
-
-  test("the scroll progress bar advances as the page scrolls", async ({ page }) => {
-    await page.goto("/");
-    const bar = page.locator("div.origin-left").first();
-    const scaleAt = async () =>
-      bar.evaluate((el) => {
-        const m = new DOMMatrixReadOnly(getComputedStyle(el).transform);
-        return m.a;
-      });
-
-    const atTop = await scaleAt();
-    await page.evaluate(() => {
-      document.documentElement.style.scrollBehavior = "auto";
-      window.scrollTo(0, document.documentElement.scrollHeight);
-    });
-    await page.waitForTimeout(300);
-    expect(await scaleAt()).toBeGreaterThan(atTop);
-  });
 
   test("the Konami code unlocks the easter egg", async ({ page }) => {
     await page.goto("/");
@@ -411,7 +351,9 @@ test.describe("Portfolio site", () => {
     await page.reload();
     await waitForHydration(page);
 
-    await expect(page.getByRole("button", { name: /play my story/i })).toContainText("2/10");
+    await expect(page.getByRole("button", { name: /play my story/i })).toContainText(
+      "2 of 10 cleared",
+    );
   });
 
   test("the brand name in the nav never breaks mid-word, even on a phone viewport", async ({

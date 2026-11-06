@@ -116,13 +116,11 @@ export function Terminal() {
           openerRef.current = document.activeElement as HTMLElement;
           setOpen(true);
         }}
-        className="fixed right-5 bottom-5 z-40 flex items-center gap-2 rounded-full border border-line bg-card/90 px-4 py-2.5 text-sm font-medium shadow-lg backdrop-blur transition hover:border-accent hover:text-accent"
+        className="inline-flex items-center gap-2 text-sm text-subtle transition-colors hover:text-foreground"
       >
-        <Icons.terminal className="size-4 text-accent" />
-        <span className="hidden sm:inline">Explore in terminal</span>
-        <kbd className="hidden rounded border border-line px-1.5 py-0.5 font-mono text-xs text-subtle sm:inline">
-          /
-        </kbd>
+        <Icons.terminal className="size-4" />
+        <span>Explore in a terminal</span>
+        <kbd className="rounded border border-line px-1.5 py-0.5 font-mono text-xs">/</kbd>
       </button>
 
       {open && (
@@ -142,7 +140,7 @@ export function Terminal() {
               <span className="size-3 rounded-full bg-[#febc2e]" />
               <span className="size-3 rounded-full bg-[#28c840]" />
               <span className="ml-2 text-xs text-white/40">
-                {profile.github}@portfolio — zsh
+                {profile.github}@portfolio: zsh
               </span>
               <button
                 type="button"

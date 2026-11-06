@@ -42,7 +42,7 @@ const COMMANDS: Record<string, { description: string; run: () => CommandResult }
     description: "print work history",
     run: () => ({
       lines: experience.flatMap((role) => [
-        `${role.period.padEnd(16)} ${role.company} — ${role.title}`,
+        `${role.period.padEnd(16)} ${role.company}, ${role.title}`,
         `${" ".repeat(16)} ${role.stats.map((s) => `${s.value} ${s.label}`).join(" · ")}`,
         "",
       ]),
@@ -52,7 +52,7 @@ const COMMANDS: Record<string, { description: string; run: () => CommandResult }
     description: "the numbers that matter",
     run: () => ({
       lines: headlineMetrics.map(
-        (m) => `  ${(m.value + m.suffix).padEnd(8)} ${m.label} — ${m.detail}`,
+        (m) => `  ${(m.value + m.suffix).padEnd(8)} ${m.label}: ${m.detail}`,
       ),
     }),
   },
@@ -72,7 +72,7 @@ const COMMANDS: Record<string, { description: string; run: () => CommandResult }
     description: "side projects with source",
     run: () => ({
       lines: projects.flatMap((p) => [
-        `${p.name} — ${p.tagline}`,
+        `${p.name}: ${p.tagline}`,
         `  ${p.description}`,
         `  github.com/${profile.github}/${p.repo}`,
         "",
@@ -83,9 +83,9 @@ const COMMANDS: Record<string, { description: string; run: () => CommandResult }
     description: "degrees and certifications",
     run: () => ({
       lines: [
-        ...education.map((e) => `  ${e.credential} — ${e.school}${e.period ? ` (${e.period})` : ""}`),
+        ...education.map((e) => `  ${e.credential}, ${e.school}${e.period ? ` (${e.period})` : ""}`),
         "",
-        ...certifications.map((c) => `  ${c.name} — ${c.issuer} (${c.year})`),
+        ...certifications.map((c) => `  ${c.name}, ${c.issuer} (${c.year})`),
       ],
     }),
   },

@@ -64,7 +64,7 @@ export const careerLevels: CareerLevel[] = [
     year: "to 2023",
     role: "B.Eng., Software Engineering",
     brief:
-      "The degree that finally counted here, and the one that opens the path to the Iron Ring and the P.Eng. from the Ordre des ingénieurs du Québec. The last stretch of it ran in parallel with the first engineering jobs — CAE, Archer and Desjardins all landed before the diploma did.",
+      "The degree that finally counted here, and the one that opens the path to the Iron Ring and the P.Eng. from the Ordre des ingénieurs du Québec. The last stretch of it ran in parallel with the first engineering jobs: CAE, Archer and Desjardins all landed before the diploma did.",
     objective: "Meet every requirement, then ship The Capstone.",
     rewards: ["B.Eng. Software Engineering", "Route to P.Eng. (OIQ)"],
     skills: ["C++", "Software architecture", "Operating systems"],
@@ -74,7 +74,7 @@ export const careerLevels: CareerLevel[] = [
     act: "Career",
     company: "CAE",
     year: "2021",
-    role: "Full-Stack Performance Engineer — Simulation",
+    role: "Full-Stack Performance Engineer (Simulation)",
     brief:
       "Flight simulators have to hold a steady frame rate or the training loses fidelity. My job was profiling the Prodigy engine's C++ render path and cutting the expensive work.",
     objective:
@@ -100,7 +100,7 @@ export const careerLevels: CareerLevel[] = [
     act: "Career",
     company: "Archer",
     year: "2022",
-    role: "Development Team Lead — Salesforce & Automation",
+    role: "Development Team Lead (Salesforce & Automation)",
     brief:
       "Leading a squad building Salesforce workflows. The wins came from replacing manual steps with automation that ran in the right order, every time.",
     objective: "Climb the pipeline collecting each stage, then take out the Manual Process itself.",
@@ -112,7 +112,7 @@ export const careerLevels: CareerLevel[] = [
     act: "Career",
     company: "Desjardins",
     year: "2022 – 2023",
-    role: "Functional Analyst — Digital Strategy",
+    role: "Functional Analyst (Digital Strategy)",
     brief:
       "Financial products carry compliance weight. The work was translating between business and engineering, and keeping the backlog from burying the delivery team.",
     objective: "Scale the vault, gather every requirement, and clear the Audit Findings guarding the exit.",
@@ -124,7 +124,7 @@ export const careerLevels: CareerLevel[] = [
     act: "Career",
     company: "Bell",
     year: "2023 – Present",
-    role: "Lead Technology Consultant — Capacity, Performance & Automation",
+    role: "Lead Technology Consultant (Capacity, Performance & Automation)",
     brief:
       "Enterprise infrastructure at national scale. Capacity planning is the difference between a quiet night and an outage, so we moved it from reactive to predictive.",
     objective: "Route the packets through the core, survive the surge, and beat Peak Load.",

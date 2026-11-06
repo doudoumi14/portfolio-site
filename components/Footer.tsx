@@ -1,12 +1,14 @@
 import { profile } from "@/data/profile";
+import { Terminal } from "./Terminal";
 
 export function Footer() {
   return (
     <footer className="border-t border-line px-6 py-10">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-sm text-subtle">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-3 text-sm text-subtle">
         <span>
           © {new Date().getFullYear()} {profile.name}
         </span>
+        <Terminal />
         <span>Built with Next.js and Tailwind CSS</span>
       </div>
     </footer>

@@ -12,7 +12,7 @@ export interface ExperienceEntry {
 export const experience: ExperienceEntry[] = [
   {
     company: "Bell",
-    title: "Lead Technology Consultant — Capacity, Performance & Automation",
+    title: "Lead Technology Consultant (Capacity, Performance & Automation)",
     period: "2023 – Present",
     location: "Montreal, Canada",
     summary:
@@ -31,7 +31,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "Desjardins",
-    title: "Functional Analyst — Digital Strategy",
+    title: "Functional Analyst (Digital Strategy)",
     period: "2022 – 2023",
     location: "Montreal, Canada",
     summary:
@@ -45,7 +45,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "Archer",
-    title: "Development Team Lead — Salesforce & Automation",
+    title: "Development Team Lead (Salesforce & Automation)",
     period: "2022",
     location: "Quebec, Canada",
     summary:
@@ -62,7 +62,7 @@ export const experience: ExperienceEntry[] = [
   },
   {
     company: "CAE",
-    title: "Full-Stack Performance Engineer — Simulation",
+    title: "Full-Stack Performance Engineer (Simulation)",
     period: "2021",
     location: "Montreal, Canada",
     summary:
